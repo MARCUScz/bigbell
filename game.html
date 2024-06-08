@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography Game</title>
+    <link rel="stylesheet" href="game.css">
+    <script src="winstreak.js" defer></script>
+
+</head>
+<body>
+    <h1>Geography Game</h1>
+    <!-- Inside game.html -->
+    <div id="modeContainer">
+        <select id="modeSelect">
+            <option value="ALL">All</option>
+            <option value="USA">USA</option>
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option> <!-- Add "America" as an option -->
+            
+            <option value="easy">easy</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+    
+
+    <div id="gameContainer">
+        <p id="countryName"></p>
+        <input type="text" id="capitalInput" placeholder="Enter the capital">
+        <button id="submitBtn">Submit</button>
+        <p id="feedback"></p>
+    </div>
+
+    <div id="winStreakContainer">
+        <div id="winStreak">Win Streak: 0</div>
+    </div>
+    
+    <button id="backButton"></button>
+
+    <script src="game.js" type="module"></script>
+</body>
+</html>

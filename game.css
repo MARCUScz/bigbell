@@ -4,26 +4,51 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Set the background color to grey */
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Make the body take the full height of the viewport */
 }
 
 h1 {
     text-align: center;
-    font-size: 48px; /* Adjust the font size as needed */
-    margin-top: 100px; /* Adjust the top margin as needed */
+    font-size: 36px; /* Adjusted for better readability on mobile */
+    margin-top: 0; /* Remove the top margin */
+}
+
+#modeContainer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px; /* Add some space below the mode container */
+}
+
+#modeSelect {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 #gameContainer {
-    width: 300px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 400px;
     text-align: center;
-    background-color: white; /* Set the background color of the gameContainer to white */
-    padding: 20px; /* Add padding for better visibility */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px; /* Added border radius for a modern look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
 }
 
 #capitalInput {
-    width: 100%;
+    width: calc(100% - 20px);
     margin-bottom: 10px;
+    padding: 10px; /* Increased padding for better touch target size */
 }
 
 #submitBtn {
@@ -33,6 +58,8 @@ h1 {
     color: white;
     border: none;
     cursor: pointer;
+    width: calc(100% - 20px); /* Full width with padding consideration */
+    margin-top: 10px;
 }
 
 #submitBtn:hover {
@@ -44,63 +71,44 @@ h1 {
     font-weight: bold;
 }
 
-#backButton {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 10px;
-    font-size: 16px;
-    background-color: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 1; /* Ensure the button is above the rectangle */
-}
-
-#backButton:hover {
-    color: #e0e0e0; /* Change text color on hover */
-}
-
-/* Add a black rectangle as a pseudo-element */
-#backButton::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 0%;
-    background-color: black;
-    opacity: 0.3; /* Adjust the opacity as needed */
-    z-index: -1; /* Ensure the rectangle is behind the button */
-}
-/* Inside game.css */
-#modeContainer {
-    position: relative; /* Positioning context for absolute positioning */
-    margin-top: 20px; /* Add some space between the game container and the mode select */
-}
-
-#modeSelect {
-    position: absolute;
-    top: 290px/* Your custom value here */; /* Adjust the vertical position as needed */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center horizontally */
-    width: 100%;
-    max-width: 300px; /* Optional: Set a maximum width for better readability */
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    /* Add any other styling as needed */
-}
-
 #winStreakContainer {
-    position: absolute;
-    top: 420px; /* Custom y position */
-    left: 50%; /* Custom x position */
-    transform: translateX(-50%); /* Center horizontally */
+    margin: 0 auto;
+    margin-top: 20px;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     padding: 10px;
     border-radius: 5px;
+    width: calc(90% - 20px);
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px; /* Adjusted font size for smaller screens */
+        margin-top: 10px;
+    }
+    
+    #gameContainer {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    #capitalInput {
+        width: calc(100% - 10px); /* Adjust input width */
+    }
+    
+    #submitBtn {
+        width: calc(100% - 10px); /* Adjust button width */
+    }
+    
+    #modeSelect {
+        width: calc(100% - 10px); /* Adjust select width */
+    }
+    
+    #winStreakContainer {
+        width: calc(100% - 10px); /* Adjust win streak container width */
+    }
 }

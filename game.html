@@ -11,6 +11,20 @@
 <body>
     <h1>Geography Game</h1>
     <!-- Inside game.html -->
+    
+    
+
+    <div id="gameContainer">
+        <p id="countryName"></p>
+        <input type="text" id="capitalInput" placeholder="Enter the capital">
+        <button id="submitBtn">Submit</button>
+        <p id="feedback"></p>
+    </div>
+
+    <div id="winStreakContainer">
+        <div id="winStreak">Win Streak: 0</div>
+    </div>
+
     <div id="modeContainer">
         <select id="modeSelect">
             <option value="ALL">All</option>
@@ -25,19 +39,7 @@
         </select>
     </div>
     
-
-    <div id="gameContainer">
-        <p id="countryName"></p>
-        <input type="text" id="capitalInput" placeholder="Enter the capital">
-        <button id="submitBtn">Submit</button>
-        <p id="feedback"></p>
-    </div>
-
-    <div id="winStreakContainer">
-        <div id="winStreak">Win Streak: 0</div>
-    </div>
-    
-    <button id="backButton"></button>
+    <option id="backButton"></option>
 
     <script src="game.js" type="module"></script>
 </body>

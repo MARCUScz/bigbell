@@ -33,7 +33,7 @@ const easiestCountriesAndCapitals = {
     "South Korea": "Seoul",
     "Spain": "Madrid",
     "Sweden": "Stockholm",
-    "Switzerland": "Bern",
+    "Switzerland": "Zurich",
     "Thailand": "Bangkok",
     "Turkey": "Ankara",
     "Ukraine": "Kyiv",

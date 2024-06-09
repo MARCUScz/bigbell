@@ -41,7 +41,7 @@ const europeanCountriesAndCapitals = {
     "Slovenia": "Ljubljana",
     "Spain": "Madrid",
     "Sweden": "Stockholm",
-    "Switzerland": "Bern",
+    "Switzerland": "Zurich",
     "Turkey": "Ankara",
     "Ukraine": "Kyiv",
     "United Kingdom": "London",

@@ -1,41 +1,73 @@
-// game.js
-
 import { increaseWinStreak, resetWinStreak, displayWinStreak } from './winstreak.js';
 
 let selectedMode = "ALL"; // Default mode
+let selectedLanguage = "en"; // Default language
 let countriesAndCapitals = {}; // Object to hold the loaded data
 
 // Function to load mode-specific data file
-async function loadModeData(mode) {
+async function loadModeData(mode, language) {
     let data;
-    switch (mode) {
-        case "ALL":
-            data = await import('./countries.js');
-            break;
-        case "USA":
-            data = await import('./usa.js');
-            break;
-        case "Europe":
-            data = await import('./europe.js');
-            break;
-        case "Asia":
-            data = await import('./asia.js');
-            break;
-        case "Africa":
-            data = await import('./africa.js');
-            break;
-        case "America":
-            data = await import('./america.js'); // Load america.js for the "America" mode
-            break;
-        case "Czech":
-            data = await import('./czech.js');
-            break;
-        case "easy":
-            data = await import('./easy.js');
-            break;
-        // Add more cases for other modes
-        default:
-            data = await import('./countries.js'); // Default to 'ALL'
+    if (language === "cz") {
+        switch (mode) {
+            case "ALL":
+                data = await import('./cz_countries.js');
+                break;
+            case "USA":
+                data = await import('./cz_usa.js');
+                break;
+            case "Europe":
+                data = await import('./cz_europe.js');
+                break;
+            case "Asia":
+                data = await import('./cz_asia.js');
+                break;
+            case "Africa":
+                data = await import('./cz_africa.js');
+                break;
+            case "America":
+                data = await import('./cz_america.js');
+                break;
+            case "easy":
+                data = await import('./cz_easy.js');
+                break;
+            case "top25":
+                data = await import('./cz_top25.js');
+                break;
+            default:
+                data = await import('./czech.js'); // Default to Czech 'ALL'
+        }
+    } else {
+        switch (mode) {
+            case "ALL":
+                data = await import('./countries.js');
+                break;
+            case "USA":
+                data = await import('./usa.js');
+                break;
+            case "Europe":
+                data = await import('./europe.js');
+                break;
+            case "Asia":
+                data = await import('./asia.js');
+                break;
+            case "Africa":
+                data = await import('./africa.js');
+                break;
+            case "America":
+                data = await import('./america.js');
+                break;
+            case "Czech":
+                data = await import('./czech.js');
+                break;
+            case "easy":
+                data = await import('./easy.js');
+                break;
+            case "top25":
+                data = await import('./top25.js');
+                break;
+            default:
+                data = await import('./countries.js'); // Default to 'ALL'
+        }
     }
     return data.default;
 }
@@ -50,7 +82,8 @@ async function displayCountry() {
 // Function to handle mode change
 async function handleModeChange() {
     selectedMode = document.getElementById('modeSelect').value;
-    countriesAndCapitals = await loadModeData(selectedMode); // Load mode-specific data
+    selectedLanguage = document.getElementById('languageSelect').value;
+    countriesAndCapitals = await loadModeData(selectedMode, selectedLanguage); // Load mode-specific data
     resetWinStreak(); // Reset win streak when the mode changes
     await displayCountry(); // Display a new country after loading data
 }
@@ -77,8 +110,6 @@ async function checkAnswer() {
     await displayCountry(); // Wait for the new country to be displayed
 }
 
-// Inside game.js
-
 // Function to handle key press event
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
@@ -89,13 +120,11 @@ function handleKeyPress(event) {
 // Event listener for key press in the input field
 document.getElementById('capitalInput').addEventListener('keypress', handleKeyPress);
 
-// Event listener to navigate to the main page
-document.getElementById('backButton').addEventListener('click', () => {
-    window.location.href = 'bigbelly.html';
-});
-
 // Event listener for mode change
 document.getElementById('modeSelect').addEventListener('change', handleModeChange);
+
+// Event listener for language change
+document.getElementById('languageSelect').addEventListener('change', handleModeChange);
 
 // Event listener to check the player's answer when the submit button is clicked
 document.getElementById('submitBtn').addEventListener('click', checkAnswer);
@@ -104,30 +133,24 @@ document.getElementById('submitBtn').addEventListener('click', checkAnswer);
 handleModeChange();
 displayWinStreak(); // Display initial win streak
 
-// Function to show the game section
-function showGameSection() {
-    document.getElementById('gameSection').style.display = 'block';
-    document.getElementById('defaultSection').style.display = 'none';
+// Modal functionality
+const modal = document.getElementById('infoModal');
+const btn = document.getElementById('infoBtn');
+const span = document.getElementsByClassName('close')[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = 'block';
 }
 
-// Function to show the default section
-function showDefaultSection() {
-    document.getElementById('gameSection').style.display = 'none';
-    document.getElementById('defaultSection').style.display = 'block';
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = 'none';
 }
 
-// Function to handle hash changes
-function handleHashChange() {
-    const hash = window.location.hash;
-    if (hash === '#/game') {
-        showGameSection();
-    } else {
-        showDefaultSection(); // Show default section if hash doesn't match
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
     }
 }
-
-// Event listener for hash changes
-window.addEventListener('hashchange', handleHashChange);
-
-// Initial check for hash when the page loads
-handleHashChange();

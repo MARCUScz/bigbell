@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography Game</title>
+    <link rel="stylesheet" href="game.css">
+    <script src="winstreak.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8191262024160656"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>GeoBigBelly The Game</h1>
+
+    <div id="gameContainer">
+        <p id="countryName"></p>
+        <input type="text" id="capitalInput" placeholder="Enter the capital">
+        <button id="submitBtn">Submit</button>
+        <p id="feedback"></p>
+    </div>
+
+    <div id="winStreakContainer">
+        <div id="winStreak">Win Streak: 0</div>
+    </div>
+
+    <div id="modeContainer">
+        <select id="modeSelect">
+            <option value="ALL">All</option>
+            <option value="USA">USA</option>
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="easy">Easy</option>
+            <option value="top25">Top 25 (largest)</option>
+        </select>
+    </div>
+
+    <div id="buttonContainer">
+        <button id="infoBtn" class="blue-btn">Info</button>
+        <select id="languageSelect" class="blue-btn">
+            <option value="en">English</option>
+            <option value="cz">Czech</option>
+            <option value="esp">Spanish</option>
+        </select>
+        <button id="reverseModeBtn" class="blue-btn toggle-btn">Reverse</button>
+    </div>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Game Rules</h2>
+            <p>1. Select a mode from the dropdown.</p>
+            <p>2. A country name will be displayed.</p>
+            <p>3. Enter the capital city of the displayed country.</p>
+            <p>! If the country has more than one capital, enter the most populated capital !</p>
+            <p>4. Click "Submit" or press Enter to check your answer.</p>
+            <p>5. If correct, your win streak increases. If incorrect, it resets.</p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+        <!-- AdSense Ad Unit -->
+        <div id="ad-left" class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8191262024160656"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div id="ad-right" class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8191262024160656"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    <script src="game.js" type="module"></script>
+</body>
+</html>

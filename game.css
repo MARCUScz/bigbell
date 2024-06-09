@@ -188,3 +188,30 @@ h1 {
         margin: 5px 0;
     }
 }
+
+/* Common styles for the ad containers */
+.ad-container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px; /* Width of the ad unit */
+}
+
+/* Left ad */
+#ad-left {
+    left: 0;
+    margin-left: 20px; /* Adjust spacing from the left edge */
+}
+
+/* Right ad */
+#ad-right {
+    right: 0;
+    margin-right: 20px; /* Adjust spacing from the right edge */
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    .ad-container {
+        display: none; /* Hide ads on smaller screens */
+    }
+}

@@ -34,7 +34,36 @@ async function loadModeData(mode, language) {
                 data = await import('./cz_top25.js');
                 break;
             default:
-                data = await import('./czech.js'); // Default to Czech 'ALL'
+                data = await import('./cz_countries.js'); // Default to Czech 'ALL'
+        }
+    } else if (language === "esp") {
+        switch (mode) {
+            case "ALL":
+                data = await import('./esp_countries.js');
+                break;
+            case "USA":
+                data = await import('./esp_usa.js');
+                break;
+            case "Europe":
+                data = await import('./esp_europe.js');
+                break;
+            case "Asia":
+                data = await import('./esp_asia.js');
+                break;
+            case "Africa":
+                data = await import('./esp_africa.js');
+                break;
+            case "America":
+                data = await import('./esp_america.js');
+                break;
+            case "easy":
+                data = await import('./esp_easy.js');
+                break;
+            case "top25":
+                data = await import('./esp_top25.js');
+                break;
+            default:
+                data = await import('./esp_countries.js'); // Default to Spanish 'ALL'
         }
     } else {
         switch (mode) {

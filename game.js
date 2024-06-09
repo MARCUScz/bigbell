@@ -3,6 +3,7 @@ import { increaseWinStreak, resetWinStreak, displayWinStreak } from './winstreak
 let selectedMode = "ALL"; // Default mode
 let selectedLanguage = "en"; // Default language
 let countriesAndCapitals = {}; // Object to hold the loaded data
+let isReverseMode = false; // Default to normal mode
 
 // Function to load mode-specific data file
 async function loadModeData(mode, language) {
@@ -101,18 +102,22 @@ async function loadModeData(mode, language) {
     return data.default;
 }
 
-// Function to display a new country based on selected mode
+// Function to display a new country or capital based on selected mode
 async function displayCountry() {
     const countries = Object.keys(countriesAndCapitals);
     const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-    document.getElementById('countryName').textContent = randomCountry;
+    if (isReverseMode) {
+        document.getElementById('countryName').textContent = countriesAndCapitals[randomCountry]; // Display capital
+    } else {
+        document.getElementById('countryName').textContent = randomCountry; // Display country
+    }
 }
 
 // Function to handle mode change
 async function handleModeChange() {
     selectedMode = document.getElementById('modeSelect').value;
     selectedLanguage = document.getElementById('languageSelect').value;
-    console.log(`Mode: ${selectedMode}, Language: ${selectedLanguage}`); // Debugging output
+    console.log(`Mode: ${selectedMode}, Language: ${selectedLanguage}, Reverse Mode: ${isReverseMode}`); // Debugging output
     countriesAndCapitals = await loadModeData(selectedMode, selectedLanguage); // Load mode-specific data
     resetWinStreak(); // Reset win streak when the mode changes
     await displayCountry(); // Display a new country after loading data
@@ -121,23 +126,31 @@ async function handleModeChange() {
 // Function to check the player's answer
 async function checkAnswer() {
     const playerInput = document.getElementById('capitalInput').value.trim();
-    const countryName = document.getElementById('countryName').textContent;
-    const correctCapital = countriesAndCapitals[countryName];
+    const displayText = document.getElementById('countryName').textContent;
+    let correctAnswer;
+
+    if (isReverseMode) {
+        // In reverse mode, the displayText is the capital, so we find the corresponding country
+        correctAnswer = Object.keys(countriesAndCapitals).find(country => countriesAndCapitals[country].toLowerCase() === displayText.toLowerCase());
+    } else {
+        // In normal mode, the displayText is the country
+        correctAnswer = countriesAndCapitals[displayText];
+    }
 
     const feedbackElement = document.getElementById('feedback');
-    if (playerInput.toLowerCase() === correctCapital.toLowerCase()) {
+    if (playerInput.toLowerCase() === correctAnswer.toLowerCase()) {
         feedbackElement.textContent = 'Correct!';
         increaseWinStreak(); // Increase win streak
     } else {
-        feedbackElement.textContent = `Incorrect. The correct capital is ${correctCapital}`;
+        feedbackElement.textContent = `Incorrect. The correct answer is ${correctAnswer}`;
         resetWinStreak(); // Reset win streak
     }
 
     // Clear the input field after checking the answer
     document.getElementById('capitalInput').value = '';
 
-    // Display a new country
-    await displayCountry(); // Wait for the new country to be displayed
+    // Display a new country or capital
+    await displayCountry(); // Wait for the new country or capital to be displayed
 }
 
 // Function to handle key press event
@@ -147,11 +160,19 @@ function handleKeyPress(event) {
     }
 }
 
+// Function to handle reverse mode toggle
+function toggleReverseMode() {
+    isReverseMode = !isReverseMode;
+    document.getElementById('reverseModeBtn').textContent = isReverseMode ? 'Normal' : 'Reverse';
+    handleModeChange(); // Reload data and display based on new mode
+}
+
 // Ensure all DOM elements exist before adding event listeners
 window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('capitalInput').addEventListener('keypress', handleKeyPress);
     document.getElementById('modeSelect').addEventListener('change', handleModeChange);
     document.getElementById('languageSelect').addEventListener('change', handleModeChange);
+    document.getElementById('reverseModeBtn').addEventListener('click', toggleReverseMode); // Add event listener for reverse mode
     document.getElementById('submitBtn').addEventListener('click', checkAnswer);
 
     handleModeChange(); // Call handleModeChange() when the page loads to ensure that it displays a country from the initial mode

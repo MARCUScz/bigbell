@@ -84,7 +84,39 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Modal styles */
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px; /* Adjusted font size for smaller screens */
+        margin-top: 10px;
+    }
+    
+    #gameContainer {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    #capitalInput {
+        width: calc(100% - 10px); /* Adjust input width */
+    }
+    
+    #submitBtn {
+        width: calc(100% - 10px); /* Adjust button width */
+    }
+    
+    #modeSelect {
+        width: calc(100% - 10px); /* Adjust select width */
+    }
+    
+    #winStreakContainer {
+        width: calc(100% - 10px); /* Adjust win streak container width */
+    }
+}
+
+/* game.css */
+
+/* ... existing styles ... */
+
 #infoBtn {
     position: fixed;
     bottom: 20px;
@@ -102,6 +134,7 @@ h1 {
     background-color: #0056b3;
 }
 
+/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -141,6 +174,10 @@ h1 {
     cursor: pointer;
 }
 
+/* game.css */
+
+/* ... existing styles ... */
+
 #languageContainer {
     margin-top: 20px;
     text-align: center;
@@ -157,11 +194,12 @@ h1 {
     border-radius: 5px;
     background-color: #007bff;
 }
-
 #languageSelect:hover {
     background-color: #0056b3;
 }
+/* ... existing styles ... */
 
+/* Add these styles to your CSS file or inside a <style> tag in the HTML */
 .toggle-btn {
     position: fixed;
     bottom: 20px;
@@ -175,59 +213,7 @@ h1 {
     font-size: 16px;
 }
 
+/* Optional: Add some hover effect */
 .toggle-btn:hover {
     background-color: #0056b3;
-}
-
-/* Media Queries for Mobile */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 24px; /* Adjusted font size for smaller screens */
-        margin-top: 10px;
-    }
-
-    #gameContainer {
-        width: 100%;
-        padding: 15px;
-    }
-
-    #capitalInput {
-        width: calc(100% - 10px); /* Adjust input width */
-    }
-
-    #submitBtn {
-        width: calc(100% - 10px); /* Adjust button width */
-    }
-
-    #modeSelect {
-        width: calc(100% - 10px); /* Adjust select width */
-    }
-
-    #winStreakContainer {
-        width: calc(100% - 10px); /* Adjust win streak container width */
-    }
-
-    #infoBtn {
-        bottom: 60px; /* Move up to avoid overlap */
-        right: calc(1% + 5px); /* Adjust position for mobile */
-        width: calc(98% - 10px); /* Full width with padding consideration */
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Adjust font size for smaller screens */
-    }
-
-    #languageSelect {
-        bottom: 60px; /* Move up to avoid overlap */
-        right: calc(5% + 5px); /* Adjust position for mobile */
-        width: calc(90% - 10px); /* Full width with padding consideration */
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Adjust font size for smaller screens */
-    }
-
-    .toggle-btn {
-        bottom: 20px; /* Position at the bottom */
-        right: calc(11% + 5px); /* Adjust position for mobile */
-        width: calc(88% - 10px); /* Full width with padding consideration */
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Adjust font size for smaller screens */
-    }
 }

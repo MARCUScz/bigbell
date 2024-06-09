@@ -84,53 +84,28 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Media Queries for Mobile */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 24px; /* Adjusted font size for smaller screens */
-        margin-top: 10px;
-    }
-    
-    #gameContainer {
-        width: 100%;
-        padding: 15px;
-    }
-    
-    #capitalInput {
-        width: calc(100% - 10px); /* Adjust input width */
-    }
-    
-    #submitBtn {
-        width: calc(100% - 10px); /* Adjust button width */
-    }
-    
-    #modeSelect {
-        width: calc(100% - 10px); /* Adjust select width */
-    }
-    
-    #winStreakContainer {
-        width: calc(100% - 10px); /* Adjust win streak container width */
-    }
+/* Container for the blue buttons */
+#buttonContainer {
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-/* game.css */
-
-/* ... existing styles ... */
-
-#infoBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 1%;
+.blue-btn {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #007bff;
     color: white;
     border: none;
-    cursor: pointer;
     border-radius: 6px;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 5px;
 }
 
-#infoBtn:hover {
+.blue-btn:hover {
     background-color: #0056b3;
 }
 
@@ -174,46 +149,42 @@ h1 {
     cursor: pointer;
 }
 
-/* game.css */
-
-/* ... existing styles ... */
-
-#languageContainer {
-    margin-top: 20px;
-    text-align: center;
-}
-
-#languageSelect {
-    position: fixed;
-    bottom: 20px;
-    right: 5%;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    background-color: #007bff;
-}
-#languageSelect:hover {
-    background-color: #0056b3;
-}
-/* ... existing styles ... */
-
-/* Add these styles to your CSS file or inside a <style> tag in the HTML */
-.toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 11%;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* Optional: Add some hover effect */
-.toggle-btn:hover {
-    background-color: #0056b3;
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px; /* Adjusted font size for smaller screens */
+        margin-top: 10px;
+    }
+    
+    #gameContainer {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    #capitalInput {
+        width: calc(100% - 10px); /* Adjust input width */
+    }
+    
+    #submitBtn {
+        width: calc(100% - 10px); /* Adjust button width */
+    }
+    
+    #modeSelect {
+        width: calc(100% - 10px); /* Adjust select width */
+    }
+    
+    #winStreakContainer {
+        width: calc(100% - 10px); /* Adjust win streak container width */
+    }
+    
+    #buttonContainer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .blue-btn {
+        width: calc(100% - 20px);
+        margin: 5px 0;
+    }
 }

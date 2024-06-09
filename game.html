@@ -6,13 +6,9 @@
     <title>Geography Game</title>
     <link rel="stylesheet" href="game.css">
     <script src="winstreak.js" defer></script>
-
 </head>
 <body>
-    <h1>Geography Game</h1>
-    <!-- Inside game.html -->
-    
-    
+    <h1>GeoBigBelly The Game</h1>
 
     <div id="gameContainer">
         <p id="countryName"></p>
@@ -32,26 +28,22 @@
             <option value="Europe">Europe</option>
             <option value="Asia">Asia</option>
             <option value="Africa">Africa</option>
-            <option value="America">America</option> <!-- Add "America" as an option -->
-            <option value="easy">easy</option>
-            <option value="top25">top25 (largest)</option>
-            <!-- Add more options as needed -->
+            <option value="America">America</option>
+            <option value="easy">Easy</option>
+            <option value="top25">Top 25 (largest)</option>
         </select>
     </div>
-    
-    <option id="backButton"></option>
 
-    <div id="languageContainer">
-        <select id="languageSelect">
+    <div id="buttonContainer">
+        <button id="infoBtn" class="blue-btn">Info</button>
+        <select id="languageSelect" class="blue-btn">
             <option value="en">English</option>
             <option value="cz">Czech</option>
             <option value="esp">Spanish</option>
-            <!-- Add more languages here -->
         </select>
+        <button id="reverseModeBtn" class="blue-btn toggle-btn">Reverse</button>
     </div>
 
-    <button id="infoBtn">Info</button>
-    
     <div id="infoModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -59,14 +51,11 @@
             <p>1. Select a mode from the dropdown menu.</p>
             <p>2. A country name will be displayed.</p>
             <p>3. Enter the capital city of the displayed country.</p>
-            <p>! if the country has more then one capital, enter the most populated capital !</p>
+            <p>! If the country has more than one capital, enter the most populated capital !</p>
             <p>4. Click "Submit" or press Enter to check your answer.</p>
             <p>5. If correct, your win streak increases. If incorrect, it resets.</p>
         </div>
     </div>
-
-    <button id="reverseModeBtn" class="toggle-btn">Reverse</button>
-
 
     <script src="game.js" type="module"></script>
 </body>

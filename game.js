@@ -83,6 +83,7 @@ async function displayCountry() {
 async function handleModeChange() {
     selectedMode = document.getElementById('modeSelect').value;
     selectedLanguage = document.getElementById('languageSelect').value;
+    console.log(`Mode: ${selectedMode}, Language: ${selectedLanguage}`); // Debugging output
     countriesAndCapitals = await loadModeData(selectedMode, selectedLanguage); // Load mode-specific data
     resetWinStreak(); // Reset win streak when the mode changes
     await displayCountry(); // Display a new country after loading data
@@ -117,40 +118,35 @@ function handleKeyPress(event) {
     }
 }
 
-// Event listener for key press in the input field
-document.getElementById('capitalInput').addEventListener('keypress', handleKeyPress);
+// Ensure all DOM elements exist before adding event listeners
+window.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('capitalInput').addEventListener('keypress', handleKeyPress);
+    document.getElementById('modeSelect').addEventListener('change', handleModeChange);
+    document.getElementById('languageSelect').addEventListener('change', handleModeChange);
+    document.getElementById('submitBtn').addEventListener('click', checkAnswer);
 
-// Event listener for mode change
-document.getElementById('modeSelect').addEventListener('change', handleModeChange);
+    handleModeChange(); // Call handleModeChange() when the page loads to ensure that it displays a country from the initial mode
+    displayWinStreak(); // Display initial win streak
 
-// Event listener for language change
-document.getElementById('languageSelect').addEventListener('change', handleModeChange);
+    // Modal functionality
+    const modal = document.getElementById('infoModal');
+    const btn = document.getElementById('infoBtn');
+    const span = document.getElementsByClassName('close')[0];
 
-// Event listener to check the player's answer when the submit button is clicked
-document.getElementById('submitBtn').addEventListener('click', checkAnswer);
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = 'block';
+    }
 
-// Call handleModeChange() when the page loads to ensure that it displays a country from the initial mode
-handleModeChange();
-displayWinStreak(); // Display initial win streak
-
-// Modal functionality
-const modal = document.getElementById('infoModal');
-const btn = document.getElementById('infoBtn');
-const span = document.getElementsByClassName('close')[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = 'block';
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = 'none';
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
         modal.style.display = 'none';
     }
-}
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
